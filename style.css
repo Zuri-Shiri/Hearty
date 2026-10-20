@@ -1,0 +1,1031 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #9fc5d4;
+    background-image: url("./white-baby-breath-s-flower-border-blue-background-with-copy-space-writing-text.jpg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Playfair Display", serif;
+    overflow-x: hidden;
+}
+
+.floating-decor {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.confetti-layer {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 9px;
+    height: 14px;
+    border-radius: 2px;
+    opacity: 0;
+    animation: confettiBurst 1.5s cubic-bezier(0.12, 0.65, 0.3, 1) forwards;
+}
+
+.floating-decor span {
+    position: absolute;
+    bottom: -30px;
+    opacity: 0;
+    animation: floatUp 14s linear infinite;
+}
+
+.floating-heart {
+    color: rgba(255, 80, 125, 0.45);
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+}
+
+.floating-petal {
+    width: 12px;
+    height: 20px;
+    border-radius: 100% 0 100% 0;
+    background: rgba(255, 210, 225, 0.72);
+}
+
+.floating-decor span:nth-child(1) { left: 7%; animation-delay: -2s; }
+.floating-decor span:nth-child(2) { left: 16%; animation-delay: -10s; }
+.floating-decor span:nth-child(3) { left: 27%; animation-delay: -6s; }
+.floating-decor span:nth-child(4) { left: 36%; animation-delay: -13s; }
+.floating-decor span:nth-child(5) { left: 47%; animation-delay: -4s; }
+.floating-decor span:nth-child(6) { left: 56%; animation-delay: -11s; }
+.floating-decor span:nth-child(7) { left: 67%; animation-delay: -8s; }
+.floating-decor span:nth-child(8) { left: 76%; animation-delay: -1s; }
+.floating-decor span:nth-child(9) { left: 86%; animation-delay: -12s; }
+.floating-decor span:nth-child(10) { left: 94%; animation-delay: -5s; }
+.floating-decor span:nth-child(11) { left: 22%; animation-delay: -9s; }
+.floating-decor span:nth-child(12) { left: 72%; animation-delay: -7s; }
+
+.intro,
+.bouquet-container,
+.letter-container,
+.gift-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================
+   OPENING SCREEN
+========================= */
+
+.intro {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    gap: 0;
+    text-align: center;
+    transition: opacity 0.6s ease;
+}
+
+.intro h1 {
+    color: #c82c57;
+    font-family: "Dancing Script", cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.arrow {
+    color: #c7154a;
+    font-family: Arial, sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 28px;
+    animation: arrowBounce 1s infinite;
+}
+
+/* =========================
+   CSS HEART
+========================= */
+
+.heart-button,
+.bouquet-button,
+.gift-button,
+.bottom-heart {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-button {
+    width: 90px;
+    height: 90px;
+    animation: heartbeat 1.2s infinite;
+}
+
+.intro-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.intro-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro-label {
+    margin-top: 8px;
+    color: #c82c57;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.bouquet-button,
+.gift-button {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #ffe5eb;
+    box-shadow: 0 4px 12px rgba(174, 47, 82, 0.14);
+}
+
+.gift-button img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    animation: heartbeat 1.2s infinite;
+}
+
+.gift-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.bouquet-button img {
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+    border-radius: 50%;
+    animation: heartbeat 1.2s infinite;
+}
+
+.heart {
+    position: relative;
+    display: block;
+    width: 42px;
+    height: 42px;
+    background: #ff174b;
+    transform: rotate(-45deg);
+    filter: drop-shadow(0 4px 4px rgba(180, 20, 70, 0.12));
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 42px;
+    height: 42px;
+    background: #ff174b;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -21px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 21px;
+}
+
+.message-icon {
+    position: absolute;
+    z-index: 1;
+    top: calc(50% - 18px);
+    left: calc(50% - 8px);
+    width: 28px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);
+    color: #fff;
+}
+
+.message-icon svg {
+    width: 28px;
+    height: 24px;
+    fill: #fff;
+    stroke: #e81343;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    overflow: hidden;
+}
+
+.heart-button:hover,
+.bouquet-button:hover,
+.gift-button:hover {
+    transform: scale(1.12);
+}
+
+/* =========================
+   BOUQUET SCREEN
+========================= */
+
+.bouquet-container,
+.gift-container {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 32px 18px;
+    background: transparent;
+}
+
+.bouquet-container.show {
+    display: flex;
+    animation: letterAppear 0.8s ease both;
+}
+
+.gift-container {
+    min-height: 100vh;
+}
+
+.gift-container.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 18px;
+    animation: letterAppear 0.8s ease both;
+}
+
+.gift-card {
+    position: relative;
+    width: min(100%, 680px);
+    padding: 40px;
+    border: 1px solid rgba(189, 36, 82, 0.16);
+    border-radius: 25px;
+    background:
+        radial-gradient(ellipse at 12% 18%, rgba(255, 255, 255, 0.72), transparent 34%),
+        radial-gradient(ellipse at 88% 82%, rgba(255, 190, 210, 0.28), transparent 38%),
+        rgba(255, 229, 235, 0.96);
+    box-shadow: 0 8px 25px rgba(174, 47, 82, 0.14);
+    color: #6e5b5e;
+    text-align: center;
+}
+
+.gift-card::before,
+.gift-card::after {
+    position: absolute;
+    z-index: 0;
+    color: rgba(189, 36, 82, 0.1);
+    font-family: Arial, sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.gift-card::before {
+    content: "♡";
+    top: 16px;
+    left: 18px;
+    transform: rotate(-15deg);
+    text-shadow:
+        82px 125px 0 rgba(189, 36, 82, 0.08),
+        250px 28px 0 rgba(189, 36, 82, 0.07);
+}
+
+.gift-card::after {
+    content: "♡";
+    right: 18px;
+    bottom: 16px;
+    transform: rotate(15deg);
+    text-shadow:
+        -95px -128px 0 rgba(189, 36, 82, 0.08),
+        -245px -24px 0 rgba(189, 36, 82, 0.07);
+}
+
+.gift-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.gift-step[hidden] {
+    display: none;
+}
+
+.gift-step.show {
+    animation: letterAppear 0.45s ease both;
+}
+
+.gift-step h2 {
+    margin-bottom: 24px;
+    color: #bd2452;
+    font-family: "Dancing Script", cursive;
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.25;
+}
+
+.gift-step p {
+    margin: 0 0 16px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.first-chat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.first-chat-copy,
+.first-chat-photo {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.first-chat-copy {
+    padding: 16px;
+    border: 8px solid #ffe5eb;
+    border-radius: 20px;
+    box-shadow: 0 4px 14px rgba(174, 47, 82, 0.18);
+}
+
+.first-chat-photo {
+    flex: 0 1 240px;
+    padding: 8px;
+    border: 8px solid #ffe5eb;
+    border-radius: 20px;
+    box-shadow: 0 4px 14px rgba(174, 47, 82, 0.18);
+}
+
+.first-chat-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: 16px;
+    object-fit: contain;
+}
+
+.gift-answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.gift-answer {
+    min-width: 140px;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 999px;
+    background: #bd2452;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.gift-answer:hover {
+    background: #a91e48;
+    transform: translateY(-2px);
+}
+
+.gift-next {
+    margin-top: 8px;
+}
+
+.gift-reveal h2 {
+    font-size: clamp(3rem, 10vw, 5rem);
+}
+
+.smile-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto 20px;
+}
+
+.smile-heart {
+    display: block;
+    width: clamp(110px, 27%, 160px);
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 8px solid #ffe5eb;
+    border-radius: 20px;
+    box-shadow: 0 4px 14px rgba(174, 47, 82, 0.18);
+}
+
+.gift-card > .back-button {
+    display: block;
+    margin: 28px auto 0;
+}
+
+.bouquet-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    width: 100%;
+    max-width: 850px;
+    padding: 34px;
+    isolation: isolate;
+    border-radius: 25px;
+    background:
+        radial-gradient(circle at 8% 14%, rgba(255, 255, 255, 0.95) 0 5px, transparent 6px),
+        radial-gradient(circle at 92% 82%, rgba(189, 36, 82, 0.22) 0 6px, transparent 7px),
+        radial-gradient(ellipse at 12% 88%, rgba(255, 255, 255, 0.78), transparent 38%),
+        radial-gradient(ellipse at 90% 12%, rgba(255, 155, 190, 0.58), transparent 42%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.45), transparent 48%),
+        #ffe5eb;
+    box-shadow: 0 8px 25px rgba(174, 47, 82, 0.12);
+}
+
+.bouquet-card::before,
+.bouquet-card::after {
+    position: absolute;
+    z-index: 0;
+    color: rgba(189, 36, 82, 0.28);
+    font-family: Arial, sans-serif;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.bouquet-card::before {
+    content: "✿";
+    top: 14px;
+    left: 18px;
+    font-size: 3.5rem;
+    text-shadow: 30px 38px 0 rgba(255, 255, 255, 0.7);
+}
+
+.bouquet-card::after {
+    content: "✿";
+    right: 20px;
+    bottom: 16px;
+    font-size: 3rem;
+    text-shadow: -32px -36px 0 rgba(255, 255, 255, 0.72);
+}
+
+.bouquet-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.bouquet-art {
+    flex: 1 1 50%;
+    text-align: center;
+}
+
+.bouquet-art h2 {
+    margin-bottom: 8px;
+    color: #bd2452;
+    font-family: "Dancing Script", cursive;
+    font-size: 2.6rem;
+}
+
+.tulip-bouquet {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 260px;
+    margin: 0 auto;
+    object-fit: contain;
+    border-radius: 24px;
+}
+
+.bouquet-message {
+    position: relative;
+    flex: 1 1 42%;
+    padding: 26px 24px;
+    border: 1px solid rgba(189, 36, 82, 0.2);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 92% 12%, rgba(255, 130, 175, 0.32) 0 6px, transparent 7px),
+        radial-gradient(ellipse at 8% 88%, rgba(255, 185, 205, 0.55), transparent 48%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 246, 249, 0.82));
+    color: #6e5b5e;
+}
+
+.message-label {
+    margin-bottom: 14px;
+    color: #bd2452;
+    font-family: "Dancing Script", cursive;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.message-copy {
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+.back-button {
+    margin-top: 22px;
+    padding: 9px 19px;
+    border: 0;
+    border-radius: 999px;
+    background: #bd2452;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background: #a91e48;
+}
+
+/* =========================
+   LETTER CONTAINER
+========================= */
+
+.letter-container {
+    position: relative;
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 38px 16px 55px;
+    background:
+        radial-gradient(circle at 10% 24%, rgba(255, 255, 255, 0.24) 0 3px, transparent 4px),
+        radial-gradient(circle at 88% 17%, rgba(255, 255, 255, 0.3) 0 4px, transparent 5px),
+        radial-gradient(circle at 82% 85%, rgba(255, 229, 235, 0.28) 0 6px, transparent 7px),
+        radial-gradient(ellipse at 12% 18%, rgba(255, 229, 235, 0.5), transparent 32%),
+        radial-gradient(ellipse at 88% 78%, rgba(255, 244, 220, 0.42), transparent 34%);
+}
+
+.letter-container.show {
+    display: flex;
+    animation: letterAppear 0.8s ease both;
+}
+
+.letter-container.show::before,
+.letter-container.show::after {
+    position: absolute;
+    z-index: 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Arial, sans-serif;
+    line-height: 1;
+    pointer-events: none;
+    animation: backgroundFloat 5s ease-in-out infinite;
+}
+
+.letter-container.show::before {
+    content: "♡";
+    top: 12%;
+    left: max(5%, calc((100% - 900px) / 2));
+    font-size: 4rem;
+}
+
+.letter-container.show::after {
+    content: "♡";
+    right: max(5%, calc((100% - 900px) / 2));
+    bottom: 12%;
+    font-size: 3rem;
+    animation-delay: -2.5s;
+}
+
+.background-decor {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-decor span {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.62);
+    font-family: Arial, sans-serif;
+    animation: backgroundFloat 6s ease-in-out infinite;
+}
+
+.background-decor span:nth-child(1) {
+    top: 29%;
+    right: 12%;
+    font-size: 1.8rem;
+    animation-delay: -1s;
+}
+
+.background-decor span:nth-child(2) {
+    top: 67%;
+    left: 10%;
+    font-size: 2.5rem;
+    animation-delay: -3s;
+}
+
+.background-decor span:nth-child(3) {
+    top: 76%;
+    right: 18%;
+    color: rgba(255, 244, 220, 0.85);
+    font-size: 1.3rem;
+    animation-delay: -4s;
+}
+
+.background-decor span:nth-child(4) {
+    top: 43%;
+    left: 16%;
+    color: rgba(255, 229, 235, 0.8);
+    font-size: 1.4rem;
+    animation-delay: -2s;
+}
+
+/* =========================
+   LETTER PAPER
+========================= */
+
+.letter {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    width: 100%;
+    max-width: 680px;
+    min-height: 780px;
+    padding: 45px 48px 95px;
+    border-radius: 25px;
+    background:
+        radial-gradient(circle at 7% 8%, rgba(189, 36, 82, 0.28) 0 5px, transparent 6px),
+        radial-gradient(circle at 92% 15%, rgba(255, 255, 255, 0.96) 0 7px, transparent 8px),
+        radial-gradient(circle at 88% 91%, rgba(189, 36, 82, 0.24) 0 6px, transparent 7px),
+        radial-gradient(ellipse at 8% 78%, rgba(255, 255, 255, 0.82), transparent 42%),
+        radial-gradient(ellipse at 90% 42%, rgba(255, 150, 185, 0.48), transparent 45%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 50%),
+        #ffe5eb;
+    box-shadow: 0 8px 25px rgba(174, 47, 82, 0.08);
+}
+
+.letter::before,
+.letter::after {
+    position: absolute;
+    z-index: 0;
+    color: rgba(189, 36, 82, 0.25);
+    font-family: Arial, sans-serif;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.letter::before {
+    content: "✿";
+    top: 16px;
+    left: 18px;
+    font-size: 3.2rem;
+    text-shadow: 28px 36px 0 rgba(255, 255, 255, 0.78);
+}
+
+.letter::after {
+    content: "✿";
+    right: 18px;
+    bottom: 18px;
+    font-size: 2.8rem;
+    text-shadow: -30px -38px 0 rgba(255, 255, 255, 0.8);
+}
+
+.letter > * {
+    position: relative;
+    z-index: 1;
+}
+
+.letter h2 {
+    font-family: "Dancing Script", cursive;
+    font-size: 3.5rem;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #bd2452;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.letter > p {
+    color: #6e5b5e;
+    font-size: 1.28rem;
+    line-height: 1.72;
+    text-align: justify;
+    margin-bottom: 37px;
+}
+
+.letter-music {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: -16px 0 32px;
+    color: #6e5b5e;
+    text-align: center;
+}
+
+.letter-music p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.letter-music a {
+    color: #bd2452;
+    font-weight: 600;
+}
+
+.letter-music audio {
+    width: min(100%, 340px);
+}
+
+.letter-music small {
+    font-size: 0.8rem;
+}
+
+/* =========================
+   SIGNATURE
+========================= */
+
+.signature {
+    margin-top: 65px;
+    text-align: right;
+    font-family: "Dancing Script", cursive;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #bd2452;
+}
+
+.signature p + p {
+    margin-top: 10px;
+}
+
+/* =========================
+   HEART BELOW THE LETTER
+========================= */
+
+.bottom-heart {
+    position: absolute;
+    bottom: -21px;
+    left: 50%;
+    width: 80px;
+    height: 65px;
+    transform: translateX(-50%);
+}
+
+.bottom-heart .heart {
+    width: 32px;
+    height: 32px;
+}
+
+.bottom-heart .heart::before,
+.bottom-heart .heart::after {
+    width: 32px;
+    height: 32px;
+}
+
+.bottom-heart .heart::before {
+    top: -16px;
+}
+
+.bottom-heart .heart::after {
+    left: 16px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes arrowBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(9px);
+    }
+}
+
+@keyframes letterAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes backgroundFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(8deg);
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(35px, -115vh, 0) rotate(300deg);
+    }
+}
+
+@keyframes confettiBurst {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.5);
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(var(--confetti-x), var(--confetti-y), 0)
+            rotate(var(--confetti-rotation)) scale(1);
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 600px) {
+    .intro {
+        padding: 0 16px;
+    }
+
+    .intro h1 {
+        font-size: 2.5rem;
+    }
+
+    .intro-buttons {
+        gap: 12px;
+    }
+
+    .intro-choice button {
+        width: 76px;
+        height: 76px;
+    }
+
+    .bouquet-button img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .bouquet-container {
+        padding: 20px 12px;
+    }
+
+    .gift-container.show {
+        padding: 20px 12px;
+    }
+
+    .gift-card {
+        padding: 30px 20px;
+    }
+
+    .first-chat {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .first-chat-photo {
+        width: min(100%, 340px);
+    }
+
+    .first-chat-image {
+        max-height: 220px;
+    }
+
+    .smile-gallery {
+        gap: 8px;
+    }
+
+    .smile-heart {
+        width: clamp(90px, 28%, 140px);
+    }
+
+    .gift-answer {
+        min-width: 120px;
+    }
+
+    .bouquet-card {
+        flex-direction: column;
+        gap: 12px;
+        padding: 24px 18px;
+        border-radius: 20px;
+    }
+
+    .bouquet-art h2 {
+        font-size: 2.2rem;
+    }
+
+    .tulip-bouquet {
+        height: min(42vh, 300px);
+    }
+
+    .bouquet-message {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .letter-container {
+        padding: 20px 12px 45px;
+    }
+
+    .letter {
+        min-height: 0;
+        padding: 32px 24px 85px;
+        border-radius: 20px;
+    }
+
+    .letter h2 {
+        font-size: 2.6rem;
+        margin-bottom: 28px;
+    }
+
+    .letter > p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 26px;
+    }
+
+    .signature {
+        margin-top: 42px;
+        font-size: 1.7rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .floating-decor,
+    .confetti-layer {
+        display: none;
+    }
+
+    .arrow,
+    .heart-button,
+    .bouquet-button img,
+    .gift-button img {
+        animation: none;
+    }
+
+    .letter-container.show,
+    .bouquet-container.show,
+    .gift-container.show {
+        animation: none;
+    }
+
+    .letter-container.show::before,
+    .letter-container.show::after,
+    .background-decor span {
+        animation: none;
+    }
+}

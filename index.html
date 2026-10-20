@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ikaw lang mahal ko Babs!</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;500&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+    <div class="floating-decor" aria-hidden="true">
+        <span class="floating-heart">♡</span>
+        <span class="floating-petal"></span>
+        <span class="floating-heart">♡</span>
+        <span class="floating-petal"></span>
+        <span class="floating-heart">♡</span>
+        <span class="floating-petal"></span>
+        <span class="floating-heart">♡</span>
+        <span class="floating-petal"></span>
+        <span class="floating-heart">♡</span>
+        <span class="floating-petal"></span>
+        <span class="floating-heart">♡</span>
+        <span class="floating-petal"></span>
+    </div>
+    <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+    <!-- First screen -->
+    <section class="intro" id="intro">
+
+        <h1>Click to see a Message for You!</h1>
+
+        <div class="arrow">↓</div>
+
+        <div class="intro-buttons">
+            <div class="intro-choice">
+                <button class="bouquet-button" id="openBouquet"
+                        aria-label="Open flowers">
+                    <img src="./bear.png" alt="" aria-hidden="true">
+                </button>
+                <span class="intro-label">Flowers</span>
+            </div>
+
+            <div class="intro-choice">
+                <button class="heart-button" id="openHeart"
+                        aria-label="Open message">
+                    <span class="heart">
+                        <span class="message-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 5h20v14H2z" />
+                                <path d="M2.5 5.5 12 13l9.5-7.5" />
+                            </svg>
+                        </span>
+                    </span>
+                </button>
+                <span class="intro-label">Message</span>
+            </div>
+
+            <div class="intro-choice">
+                <button class="gift-button" id="openGift" type="button"
+                        aria-label="Open gift">
+                    <img src="./gift.png" alt="" aria-hidden="true">
+                </button>
+                <span class="intro-label">Gift</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Love letter screen -->
+    <main class="letter-container" id="letterContainer">
+
+        <div class="background-decor" aria-hidden="true">
+            <span>✦</span>
+            <span>♡</span>
+            <span>✧</span>
+            <span>♡</span>
+        </div>
+        <article class="letter">
+
+            <h2>Hiiwooo po Babs, Happy 2nd Monthsary Pooo!,</h2>
+
+            <p>
+                two months na tayo, and i'm so happy na dumating ka sa buhay ko. kahit short time pa lang, you've already given me so many reasons to be happy. 
+                thank you po sa love, efforts, and sa pagpaparamdam sa akin na special ako. ^^
+                i know hindi laging magiging perfect ang relationship natin, and may times na magkakaroon tayo ng tampuhan or misunderstandings. 
+                pero sana piliin pa rin natin ang isa't isa and ayusin lahat together, owkiii? 
+                i want to be with you sa happy days and even sa times na hindi ka okay. 
+                i'll always try my best to understand you and love you better every day.
+            </p>
+            <p>
+                sana marami pa tayong motmot, memories, dates, and lambing na pagsasaluhan. 
+                i'm so grateful na ikaw yung kasama ko, babs. if i could choose again, ikaw pa rin talaga. 
+                haaaappy 2nd motmot sa'tin! i love you so much, baabbsss! always remember na nandito lang ako for you. 
+                ikaw at ikaw pa rin po! mwaaaahhh 😚
+            </p>
+            <div class="signature">
+                <p>Forever Yours,</p>
+                <p>Zuri "Babi"</p>
+            </div>
+
+            <button class="bottom-heart" id="closeLetter"
+                    aria-label="Close the love letter">
+                <span class="heart">
+                    <span class="message-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M2 5h20v14H2z" />
+                            <path d="M2.5 5.5 12 13l9.5-7.5" />
+                        </svg>
+                    </span>
+                </span>
+            </button>
+        </article>
+    </main>
+
+    <!-- Bouquet screen -->
+    <main class="bouquet-container" id="bouquetContainer">
+        <article class="bouquet-card">
+            <div class="bouquet-art">
+                <h2>A little bouquet for you</h2>
+                <img class="tulip-bouquet" src="./tulips.jpeg"
+                     alt="A bouquet of blue tulips">
+            </div>
+            <aside class="bouquet-message">
+                <p class="message-label">A little note</p>
+                <p class="message-copy">even from afar, i'm sending you a little love. i hope these flowers make you smile, babs. 💙 i wish i could be there to give them to you personally and see that beautiful smile of yours. for now, let these flowers remind you that someone is thinking of you, missing you, and sending you all the love you deserve. 🌷💗</p>
+                <button class="back-button" id="closeBouquet">Back</button>
+            </aside>
+        </article>
+    </main>
+
+    <main class="gift-container" id="giftContainer" aria-label="Gift surprise">
+        <section class="gift-card" aria-live="polite">
+            <div class="gift-step show" data-gift-step="1">
+                <h2>ARE YOU READY FOR A LITTLE SURPRISE?</h2>
+                <div class="gift-answers">
+                    <button class="gift-answer" data-next-step="2">Of Course</button>
+                    <button class="gift-answer" data-next-step="2">Yes</button>
+                </div>
+            </div>
+
+            <div class="gift-step" data-gift-step="2" hidden>
+                <h2>DO YOU KNOW HOW MUCH I LOVE YOU?</h2>
+                <div class="gift-answers">
+                    <button class="gift-answer" data-next-step="3">A Little</button>
+                    <button class="gift-answer" data-next-step="3">A Lot</button>
+                    <button class="gift-answer" data-next-step="3">Infinite</button>
+                </div>
+            </div>
+
+            <div class="gift-step" data-gift-step="3" hidden>
+                <h2>DO YOU REMEMBER OUR FIRST CHAT?</h2>
+                <div class="first-chat">
+                    <div class="first-chat-copy">
+                        <p>I still smile when I remember this conversation 😚🥰</p>
+                        <p>One of my favorite memories with you ...<br>simple, funny, and unforgettable.</p>
+                    </div>
+                    <div class="first-chat-photo">
+                        <img class="first-chat-image" src="./convo.jpeg"
+                             alt="A screenshot of our first chat">
+                    </div>
+                </div>
+                <button class="gift-answer gift-next" data-next-step="4">Next</button>
+            </div>
+
+            <div class="gift-step" data-gift-step="4" hidden>
+                <h2>YOU KNOW WHAT I LOVE THE MOST?</h2>
+                <button class="gift-answer" data-next-step="5">Click to know</button>
+            </div>
+
+            <div class="gift-step gift-reveal" data-gift-step="5" hidden>
+                <h2>YOUR SMILE AND EYES ^^</h2>
+                <div class="smile-gallery">
+                    <img class="smile-heart" src="./jassy.jpeg"
+                         alt="A photo showing your smile">
+                    <img class="smile-heart" src="./jassyy.jpeg"
+                         alt="Another photo showing your smile and eyes">
+                    <img class="smile-heart" src="./jassyyy.jpeg"
+                         alt="Another photo showing your smile and eyes">
+                </div>
+                <button class="gift-answer gift-next" id="finishGift">Next</button>
+            </div>
+
+            <button class="back-button" id="closeGift">Back</button>
+        </section>
+    </main>
+
+    <audio id="letterSong" loop preload="none"
+           aria-label="Soft instrumental background music for the message" hidden>
+        <source src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/fc/e6/cf/fce6cf73-e7c2-1bff-dcf6-2b5c4230f1c5/mzaf_8366276182973780808.plus.aac.p.m4a"
+                type="audio/mp4">
+    </audio>
+    <audio id="giftSong" loop preload="none"
+           aria-label="Prettiest Thing I've Ever Seen by LANY background music" hidden>
+        <source src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/24/a1/ce/24a1cec1-5013-e233-802f-87279e936fab/mzaf_10046644892408684791.plus.aac.p.m4a"
+                type="audio/mp4">
+    </audio>
+    <audio id="flowerSong" loop preload="none"
+           aria-label="CANDYRELLA by Paul Partohap background music" hidden>
+        <source src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2f/a9/87/2fa98771-e656-40ac-e3fd-290f1aaeedb7/mzaf_3280809317733145700.plus.aac.p.m4a"
+                type="audio/mp4">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
